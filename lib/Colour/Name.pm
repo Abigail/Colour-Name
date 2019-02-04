@@ -61,7 +61,7 @@ foreach my $line (@data) {
 ################################################################################
 
 sub rgb ($colour, $style = $RGB_HEX) {
-    my $norm = lc $colour =~ s/\W+//gr;
+    my $norm = (lc $colour) =~ s/[^a-z0-9]+//gr;
        $norm =~ s/\D\K1$//;
        $norm =~ s/gray/grey/;
 
