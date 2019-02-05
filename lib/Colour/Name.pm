@@ -69,12 +69,12 @@ sub rgb ($colour, $style = $RGB_HEX) {
     if ($style == $RGB_HEX) {
         return sprintf "#%s%s%s" => @$RGB;
     }
-    elsif ($style == $RGB_HEX_TRIPLE) {
-        return wantarray ? [@$RGB] : @$RGB;
+    elsif ($style == $RGB_HEX_TRIPLET) {
+        return wantarray ? @$RGB : [@$RGB];
     }
     elsif ($style == $RGB_TRIPLET) {
         my @triple = map {hex} @$RGB;
-        return wantarray ? [@triple] : @triple;
+        return wantarray ? @triple : [@triple];
     }
     elsif ($style == $RGB_RGB) {
         return sprintf "rgb(%d,%d,%d)" => map {hex} @$RGB;
