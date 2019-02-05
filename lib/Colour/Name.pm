@@ -62,7 +62,6 @@ foreach my $line (@data) {
 
 sub rgb ($colour, $style = $RGB_HEX) {
     my $norm = (lc $colour) =~ s/[^a-z0-9]+//gr;
-       $norm =~ s/\D\K1$//;
        $norm =~ s/gray/grey/;
 
     my $RGB = $colour {$norm} or return;
@@ -99,6 +98,7 @@ BEGIN {
         #0000cd mediumblue
         #0000ee blue2
         #0000ff blue
+        #0000ff blue1
         #006400 darkgreen
         #00688b deepskyblue4
         #00868b turquoise4
@@ -109,6 +109,7 @@ BEGIN {
         #009acd deepskyblue3
         #00b2ee deepskyblue2
         #00bfff deepskyblue
+        #00bfff deepskyblue1
         #00c5cd turquoise3
         #00cd00 green3
         #00cd66 springgreen3
@@ -118,12 +119,15 @@ BEGIN {
         #00ee00 green2
         #00ee76 springgreen2
         #00eeee cyan2
-        #00f5ff turquoise
+        #00f5ff turquoise1
         #00fa9a mediumspringgreen
         #00ff00 green
+        #00ff00 green1
         #00ff7f springgreen
+        #00ff7f springgreen1
         #00ffff cyan
-        #030303 grey
+        #00ffff cyan1
+        #030303 grey1
         #050505 grey2
         #080808 grey3
         #0a0a0a grey4
@@ -142,6 +146,7 @@ BEGIN {
         #1c86ee dodgerblue2
         #1e1e1e sgigrey12
         #1e90ff dodgerblue
+        #1e90ff dodgerblue1
         #1f1f1f grey12
         #20b2aa lightseagreen
         #212121 grey13
@@ -185,7 +190,7 @@ BEGIN {
         #474747 grey28
         #474747 sgigrey28
         #483d8b darkslateblue
-        #4876ff royalblue
+        #4876ff royalblue1
         #48d1cc mediumturquoise
         #4a4a4a grey29
         #4a708b skyblue4
@@ -200,7 +205,7 @@ BEGIN {
         #53868b cadetblue4
         #545454 grey33
         #548b54 palegreen4
-        #54ff9f seagreen
+        #54ff9f seagreen1
         #551a8b purple4
         #555555 sgidarkgrey
         #556b2f darkolivegreen
@@ -215,7 +220,7 @@ BEGIN {
         #607b8b lightskyblue4
         #616161 grey38
         #636363 grey39
-        #63b8ff steelblue
+        #63b8ff steelblue1
         #6495ed cornflowerblue
         #666666 grey40
         #666666 sgigrey40
@@ -265,9 +270,11 @@ BEGIN {
         #7ec0ee skyblue2
         #7f7f7f grey50
         #7fff00 chartreuse
+        #7fff00 chartreuse1
         #7fffd4 aquamarine
+        #7fffd4 aquamarine1
         #828282 grey51
-        #836fff slateblue
+        #836fff slateblue1
         #838b83 honeydew4
         #838b8b azure4
         #8470ff lightslateblue
@@ -277,7 +284,7 @@ BEGIN {
         #878787 grey53
         #87ceeb skyblue
         #87cefa lightskyblue
-        #87ceff skyblue
+        #87ceff skyblue1
         #8968cd mediumpurple3
         #8a2be2 blueviolet
         #8a8a8a grey54
@@ -348,8 +355,8 @@ BEGIN {
         #949494 grey58
         #969696 grey59
         #96cdcd paleturquoise3
-        #97ffff darkslategrey
-        #98f5ff cadetblue
+        #97ffff darkslategrey1
+        #98f5ff cadetblue1
         #98fb98 palegreen
         #9932cc darkorchid
         #999999 grey60
@@ -358,8 +365,8 @@ BEGIN {
         #9ac0cd lightblue3
         #9acd32 olivedrab3
         #9acd32 yellowgreen
-        #9aff9a palegreen
-        #9b30ff purple
+        #9aff9a palegreen1
+        #9b30ff purple1
         #9bcd9b darkseagreen3
         #9c9c9c grey61
         #9e9e9e grey62
@@ -378,7 +385,7 @@ BEGIN {
         #a8a8a8 grey66
         #a9a9a9 darkgrey
         #aaaaaa sgilightgrey
-        #ab82ff mediumpurple
+        #ab82ff mediumpurple1
         #ababab grey67
         #adadad grey68
         #adadad sgigrey68
@@ -390,7 +397,7 @@ BEGIN {
         #b0b0b0 grey69
         #b0c4de lightsteelblue
         #b0e0e6 powderblue
-        #b0e2ff lightskyblue
+        #b0e2ff lightskyblue1
         #b22222 firebrick
         #b23aee darkorchid2
         #b2dfee lightblue2
@@ -406,31 +413,31 @@ BEGIN {
         #b9d3ee slategrey2
         #ba55d3 mediumorchid
         #bababa grey73
-        #bbffff paleturquoise
+        #bbffff paleturquoise1
         #bc8f8f rosybrown
         #bcd2ee lightsteelblue2
         #bcee68 darkolivegreen2
         #bdb76b darkkhaki
         #bdbdbd grey74
         #bebebe grey
-        #bf3eff darkorchid
+        #bf3eff darkorchid1
         #bfbfbf grey75
-        #bfefff lightblue
-        #c0ff3e olivedrab
+        #bfefff lightblue1
+        #c0ff3e olivedrab1
         #c1c1c1 sgigrey76
         #c1cdc1 honeydew3
         #c1cdcd azure3
-        #c1ffc1 darkseagreen
+        #c1ffc1 darkseagreen1
         #c2c2c2 grey76
         #c4c4c4 grey77
         #c5c1aa sgibrightgrey
         #c67171 sgisalmon
-        #c6e2ff slategrey
+        #c6e2ff slategrey1
         #c71585 mediumvioletred
         #c7c7c7 grey78
         #c9c9c9 grey79
-        #cae1ff lightsteelblue
-        #caff70 darkolivegreen
+        #cae1ff lightsteelblue1
+        #caff70 darkolivegreen1
         #cccccc grey80
         #cccccc sgigrey80
         #cd0000 red3
@@ -504,12 +511,13 @@ BEGIN {
         #dda0dd plum
         #deb887 burlywood
         #dedede grey87
-        #e066ff mediumorchid
+        #e066ff mediumorchid1
         #e0e0e0 grey88
         #e0e0e0 sgigrey88
         #e0eee0 honeydew2
         #e0eeee azure2
         #e0ffff lightcyan
+        #e0ffff lightcyan1
         #e3e3e3 grey89
         #e5e5e5 grey90
         #e6e6fa lavender
@@ -572,7 +580,9 @@ BEGIN {
         #f0f0f0 grey94
         #f0f8ff aliceblue
         #f0fff0 honeydew
+        #f0fff0 honeydew1
         #f0ffff azure
+        #f0ffff azure1
         #f2f2f2 grey95
         #f4a460 sandybrown
         #f4f4f4 sgigrey96
@@ -591,60 +601,80 @@ BEGIN {
         #fcfcfc grey99
         #fdf5e6 oldlace
         #ff0000 red
+        #ff0000 red1
         #ff00ff magenta
+        #ff00ff magenta1
         #ff1493 deeppink
-        #ff3030 firebrick
-        #ff34b3 maroon
-        #ff3e96 violetred
-        #ff4040 brown
+        #ff1493 deeppink1
+        #ff3030 firebrick1
+        #ff34b3 maroon1
+        #ff3e96 violetred1
+        #ff4040 brown1
         #ff4500 orangered
+        #ff4500 orangered1
         #ff6347 tomato
+        #ff6347 tomato1
         #ff69b4 hotpink
-        #ff6a6a indianred
-        #ff6eb4 hotpink
-        #ff7256 coral
-        #ff7f00 darkorange
-        #ff7f24 chocolate
+        #ff6a6a indianred1
+        #ff6eb4 hotpink1
+        #ff7256 coral1
+        #ff7f00 darkorange1
+        #ff7f24 chocolate1
         #ff7f50 coral
-        #ff8247 sienna
-        #ff82ab palevioletred
-        #ff83fa orchid
+        #ff8247 sienna1
+        #ff82ab palevioletred1
+        #ff83fa orchid1
         #ff8c00 darkorange
-        #ff8c69 salmon
+        #ff8c69 salmon1
         #ffa07a lightsalmon
+        #ffa07a lightsalmon1
         #ffa500 orange
-        #ffa54f tan
-        #ffaeb9 lightpink
-        #ffb5c5 pink
+        #ffa500 orange1
+        #ffa54f tan1
+        #ffaeb9 lightpink1
+        #ffb5c5 pink1
         #ffb6c1 lightpink
-        #ffb90f darkgoldenrod
-        #ffbbff plum
+        #ffb90f darkgoldenrod1
+        #ffbbff plum1
         #ffc0cb pink
-        #ffc125 goldenrod
-        #ffc1c1 rosybrown
-        #ffd39b burlywood
+        #ffc125 goldenrod1
+        #ffc1c1 rosybrown1
+        #ffd39b burlywood1
         #ffd700 gold
+        #ffd700 gold1
         #ffdab9 peachpuff
+        #ffdab9 peachpuff1
         #ffdead navajowhite
-        #ffe1ff thistle
+        #ffdead navajowhite1
+        #ffe1ff thistle1
         #ffe4b5 moccasin
         #ffe4c4 bisque
+        #ffe4c4 bisque1
         #ffe4e1 mistyrose
-        #ffe7ba wheat
+        #ffe4e1 mistyrose1
+        #ffe7ba wheat1
         #ffebcd blanchedalmond
-        #ffec8b lightgoldenrod
+        #ffec8b lightgoldenrod1
         #ffefd5 papayawhip
-        #ffefdb antiquewhite
+        #ffefdb antiquewhite1
         #fff0f5 lavenderblush
+        #fff0f5 lavenderblush1
         #fff5ee seashell
-        #fff68f khaki
+        #fff5ee seashell1
+        #fff68f khaki1
         #fff8dc cornsilk
+        #fff8dc cornsilk1
         #fffacd lemonchiffon
+        #fffacd lemonchiffon1
         #fffaf0 floralwhite
         #fffafa snow
+        #fffafa snow1
         #ffff00 yellow
+        #ffff00 yellow1
         #ffffe0 lightyellow
+        #ffffe0 lightyellow1
         #fffff0 ivory
+        #fffff0 ivory1
         #ffffff grey100
         #ffffff sgigrey100
         #ffffff white
