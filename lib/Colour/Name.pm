@@ -657,17 +657,80 @@ __END__
 
 =head1 NAME
 
-Colour::Name - Abstract
+Colour::Name - Return RGB values given colour names.
 
 =head1 SYNOPSIS
 
+  use Colour::Name;
+
+  printf "The rgb value for %s is %s" => 'tomato', rgb 'tomato', $RGB_HEX;
+
 =head1 DESCRIPTION
+
+This module exports one subroutine C<< rgb >>, which takes an colour
+name, and an optional style parameter as arguments. It returns the
+RGB (I<< red >>, I<< green >>, I<< blue >>) values for that colour.
+
+The colour names (and their RGB values) come from the F<< rgb.txt >>
+file from the old I<< X11 >> distribution. We've also added some
+values from I<< SGI >>, mostly shades of gray.
+
+Colour names are case insensitive, and any non ASCII letter or digit
+is ignored. That is, C<< yellow >>, C<< YelLow >>, and C<< y.E__llo!w? >>
+are all considered identical.
+
+The following styles can be used (they're all exported when using
+C<< Colour::Name >>):
+
+=over 2
+
+=item C<< $RGB_HEX >>
+
+Returns a seven character string, starting with a C<< # >>, followed by
+six hex digits, encoding the RGB value as a hex value. This is the 
+default if no style parameter is given.
+
+  rgb (Maroon => $RGB_HEX);          # Returns '#ff34b3'
+
+=item C<< $RGB_HEX_TRIPLET >>
+
+Returns a list (in list context) or an arrayref (in scalar context)
+with three elements; each element is a two character hex string with
+the red, green, and blue values.
+
+  rgb (Gold   => $RGB_HEX_TRIPLET);  # Returns ["ff", "d7", "00"]
+
+=item C<< $RGB_TRIPLET >>
+
+Returns a list (in list context) or an arrayref (in scalar context)
+with three elements; each element is an integer of the
+the red, green, and blue values.
+
+  rgb (Tan    => $RGB_TRIPLET);      # Returns [210, 180, 140]
+
+=item C<< $RGB_RGB >>
+
+Returns a string in the form of C<< rgb(RRR,GGG,BBB) >>, suitable
+to be used in I<< CSS >>, I<< SVG >>, etc. The values inside the
+string are in decimal.
+
+  rgb (Purple => $RGB_RGB);          # Returns 'rgb(155,48,255)'
+
+=back
 
 =head1 BUGS
 
 =head1 TODO
 
 =head1 SEE ALSO
+
+=head1 MOTIVATION
+
+I just wanted a simple module mapping names to RGB values, and
+nothing else. There are quite a bunch of modules on CPAN to handle
+RGB values, and while a few could be used to map colours to RGB
+values, it wasn't clear which colours. It was simpler to write a
+module than to figure it out.
 
 =head1 DEVELOPMENT
 
