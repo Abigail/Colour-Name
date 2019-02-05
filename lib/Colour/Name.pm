@@ -10,14 +10,14 @@ use experimental 'lexical_subs';
 
 use Exporter ();
 our @ISA    = qw [Exporter];
-our @EXPORT = qw [rgb $RGB_HEX $RGB_HEX_TRIPLE $RGB_TRIPLE $RGB_RGB];
+our @EXPORT = qw [rgb $RGB_HEX $RGB_HEX_TRIPLET $RGB_TRIPLET $RGB_RGB];
 
 our $VERSION = '2019020401';
 
-our $RGB_HEX         = 0;
-our $RGB_HEX_TRIPLE  = 1;
-our $RGB_TRIPLE      = 2;
-our $RGB_RGB         = 3;
+our $RGB_HEX          = 0;
+our $RGB_HEX_TRIPLET  = 1;
+our $RGB_TRIPLET      = 2;
+our $RGB_RGB          = 3;
 
 my $RED   = 0;
 my $GREEN = 1;
@@ -48,11 +48,11 @@ foreach my $line (@data) {
 #
 #   - $RGB_HEX (default): Return a string in the form '#RRGGBB', with
 #          the values in hex.
-#   - $RGB_HEX_TRIPLE: Return a triple of values (red, green, blue).
+#   - $RGB_HEX_TRIPLET: Return a triple of values (red, green, blue).
 #          Each value is a 2 character hex string. In list context,
 #          a 3-element list is returned, else a reference to a 3-element
 #          array is returned.
-#   - $RGB_TRIPLE: Return a triple of values (red, green, blue). Each
+#   - $RGB_TRIPLET: Return a triple of values (red, green, blue). Each
 #          value is an integer. In list context, a 3-element list is
 #          returned, else a reference to a 3-element array is returned.
 #   - $RGB_RGB: Return a string in the form 'rgb(RRR,GGG,BBB)'. The values
@@ -72,7 +72,7 @@ sub rgb ($colour, $style = $RGB_HEX) {
     elsif ($style == $RGB_HEX_TRIPLE) {
         return wantarray ? [@$RGB] : @$RGB;
     }
-    elsif ($style == $RGB_TRIPLE) {
+    elsif ($style == $RGB_TRIPLET) {
         my @triple = map {hex} @$RGB;
         return wantarray ? [@triple] : @triple;
     }
