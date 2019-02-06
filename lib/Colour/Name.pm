@@ -12,7 +12,7 @@ use Exporter ();
 our @ISA     = qw [Exporter];
 our @EXPORT  = qw [rgb $RGB_HEX $RGB_HEX_TRIPLET $RGB_TRIPLET $RGB_RGB];
 
-our $VERSION = '2019020401';
+our $VERSION = '2019020601';
 
 our $RGB_HEX          = 0;
 our $RGB_HEX_TRIPLET  = 1;
