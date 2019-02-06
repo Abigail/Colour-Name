@@ -30,25 +30,25 @@ foreach my $line (@data) {
     $line =~ /^\s* \# (?<red>   \p{Hex}{2})
                       (?<green> \p{Hex}{2})
                       (?<blue>  \p{Hex}{2}) \s+
-                     ((?<class>[^:]+):\s*)?
+                     ((?<source>[^:]+):\s*)?
                       (?<colour>.*\S) \s* $/x or
                       die "Failed to parse $line\n";
 
     my @RGB    = @+ {qw [red green blue]};
-    my $class  = $+ {class} // "RGB";
+    my $source = $+ {source} // "RGB";
     my $colour = $+ {colour};
 
     $colour    =~ s/[^a-zA-Z0-9]+//;
     $colour    =  lc $colour;
 
     $colour {$colour}        //= \@RGB;
-    $colour {"$class:$colour"} = \@RGB;
+    $colour {"$source:$colour"} = \@RGB;
 }
 
 
 ################################################################################
 #
-# rgb ($colour, $style)
+# rgb ($colour, $style = $RGB_HEX, $source = undef)
 #
 # Given a colour, returns the RGB values. The (optional) style determines
 # in which format the values are returned.
@@ -70,16 +70,20 @@ foreach my $line (@data) {
 #   - $RGB_RGB: Return a string in the form 'rgb(RRR,GGG,BBB)'. The values
 #          are in decimal.
 #
+# An optional source name can be used, either as a third parameter,
+# or as a prefix (with a colon) of the colour name. Only colour
+# names from that source are used.
+#
 ################################################################################
 
-sub rgb ($colour, $style = $RGB_HEX, $class = undef) {
-    if (!$class && $colour =~ s/^([a-zA-Z]+)://) {
-        $class = $1;
+sub rgb ($colour, $style = $RGB_HEX, $source = undef) {
+    if (!$source && $colour =~ s/^([a-zA-Z]+)://) {
+        $source = $1;
     }
     my $norm = (lc $colour) =~ s/[^a-z0-9]+//gr;
        $norm =~ s/gray/grey/;
 
-    my $RGB = $class ? $colour {"$class:$norm"} : $colour {$norm} or return;
+    my $RGB = $source ? $colour {"$source:$norm"} : $colour {$norm} or return;
 
     if (!$style || $style == $RGB_HEX) {
         return sprintf "#%s%s%s" => @$RGB;
