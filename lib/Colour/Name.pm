@@ -631,7 +631,7 @@ BEGIN {
         #ffe4e1 Misty Rose
         #ffe4e1 Misty Rose1
         #ffe7ba Wheat1
-        #ffebcd Blancheda Almond
+        #ffebcd Blanched Almond
         #ffec8b Light Goldenrod1
         #ffefd5 Papaya Whip
         #ffefdb Antique White1
