@@ -705,6 +705,8 @@ BEGIN {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Colour::Name - Return RGB values given colour names.
@@ -717,27 +719,40 @@ Colour::Name - Return RGB values given colour names.
 
 =head1 DESCRIPTION
 
-This module exports one subroutine C<< rgb >>, which takes an colour
-name, and an optional style parameter as arguments. It returns the
-RGB (I<< red >>, I<< green >>, I<< blue >>) values for that colour.
+This module maps colour names to I<< RGB >> values. The colour names come 
+initially from the F<rbg.txt> file distributed with the I<< X Windows System >>,
+but colour names from other sources may be used.
 
-The colour names (and their RGB values) come from the F<< rgb.txt >>
-file from the old I<< X11 >> distribution. We've also added some
-values from I<< SGI >>, mostly shades of gray.
+=head2 C<< rgb ($colour, $style = $RGB_HEX, $source = undef) >>
+
+The main subroutine exported is C<< rgb >>. It takes a colour name,
+and returns its I<< RGB >> values.
+
+It takes the following arguments:
+
+=head3 C<< $colour >>
+
+This required argument is the colour name to be mapped. 
 
 Colour names are case insensitive, and any non ASCII letter or digit
 is ignored. That is, C<< yellow >>, C<< YelLow >>, and C<< y.E__llo!w? >>
 are all considered identical.
 
-The following styles can be used (they're all exported when using
-C<< Colour::Name >>):
+The colour name may be prefixed by a source name, with the source and
+the colour names separated by a colon (C<< : >>). (So, for example
+C<< RGB:Yellow >>). See below for a discussion about sources.
+
+=head3 C<< $style >>
+
+The C<< $style >> argument determines in which format the I<< RGB >>
+values are returned. Each of the values is exported by C<< Colour::Name >>.
 
 =over 2
 
 =item C<< $RGB_HEX >>
 
 Returns a seven character string, starting with a C<< # >>, followed by
-six hex digits, encoding the RGB value as a hex value. This is the 
+six hex digits, encoding the I<< RGB >> value as a hex value. This is the 
 default if no style parameter is given.
 
   rgb (Maroon => $RGB_HEX);          # Returns '#ff34b3'
@@ -768,17 +783,37 @@ string are in decimal.
 
 =back
 
+=head3 $source
+
+Different sources may define the same colour name, but use different
+values for the colours. For instance, one source defines I<< Grey76 >>
+to have I<< RGB >> value C<< #c2c2c2 >>, while another source defines
+it as C<< #c1c1c1 >>.
+
+If we don't give a source, the module searches for the colour in
+any of its sources, returning the first one found. If you do pass 
+in a source name, by either using the third argument to C<< rgb >>,
+or by prefixing the colour name with the source name, C<< rgb >>
+will only search for the colour name in the given source.
+
+Currently, only two sources are availble: I<< RGB >>, for colours
+from the F<< rgb.txt >> file, and I<< SGI >>, additional colours
+(mostly shades of grey) added to the F<< rgb.txt >> on the I<< SGI >>
+platform.
+
 =head1 BUGS
 
 =head1 TODO
+
+Subroutines returning colour names, and source names.
 
 =head1 SEE ALSO
 
 =head1 MOTIVATION
 
-I just wanted a simple module mapping names to RGB values, and
-nothing else. There are quite a bunch of modules on CPAN to handle
-RGB values, and while a few could be used to map colours to RGB
+I just wanted a simple module mapping names to I<< RGB >> values, and
+nothing else. There are quite a bunch of modules on I<< CPAN >> to handle
+I<< RGB >> values, and while a few could be used to map colours to I<< RGB >>
 values, it wasn't clear which colours. It was simpler to write a
 module than to figure it out.
 
