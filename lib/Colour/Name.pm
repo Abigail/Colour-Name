@@ -38,7 +38,7 @@ foreach my $line (@data) {
     my $source = $+ {source} // "RGB";
     my $colour = $+ {colour};
 
-    $colour    =~ s/[^a-zA-Z0-9]+//;
+    $colour    =~ s/[^a-zA-Z0-9]+//g;
     $colour    =  lc $colour;
 
     $colour {$colour}        //= \@RGB;
