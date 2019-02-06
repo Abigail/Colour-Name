@@ -5,6 +5,7 @@ t/000_basic.t
 t/100_rgb.t
 t/101_rgb-normalize.t
 t/102_rgb-types.t
+t/109_rgb.txt.t
 t/950_pod.t
 t/980_versions.t
 t/981_permissions.t
